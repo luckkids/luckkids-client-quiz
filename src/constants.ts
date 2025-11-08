@@ -1,0 +1,6 @@
+export const Constants = {
+    BREAKPOINT_MOBILE:390,
+    BREAKPOINT_TABLET:1024,
+    BREAKPOINT_DESKTOP:1920,
+    MQ_RATIO:1,
+}
