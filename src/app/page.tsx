@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import mq from '@/util/mq';
 import Section from '@/components/core/core.section';
 import Content from '@/components/core/core.content';
-import { typography } from '@/typography';
 
 const S = {
   Banner: styled.div(
