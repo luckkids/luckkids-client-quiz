@@ -4,6 +4,7 @@ import mq from '@/util/mq';
 import Section from '@/components/core/coreSection';
 import Content from '@/components/core/coreContent';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const S = {
   TextWrap: styled.article(
@@ -105,7 +106,7 @@ export default function Home() {
             <S.Caption>
               <strong>1</strong>개운법 알아보기
             </S.Caption>
-            <img src="/img/main-visual.png" alt="그래도 해야지 어떡해" />
+            <Image src="/img/main-visual.png" alt="그래도 해야지 어떡해" />
           </S.Figure>
           <S.P>
             온 마음을 쏟고, 밤낮 없이 노력해도 막히는 때가 있다. <br />
