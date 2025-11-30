@@ -1,6 +1,6 @@
 'use client';
-import Section from '@/components/core/core.section';
-import Content from '@/components/core/core.content';
+import Section from '@/components/core/coreSection';
+import Content from '@/components/core/coreContent';
 
 export default function About() {
   return (

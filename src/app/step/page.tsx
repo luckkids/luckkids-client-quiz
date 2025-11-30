@@ -1,8 +1,8 @@
 'use client';
 import styled from '@emotion/styled';
 import mq from '@/util/mq';
-import Section from '@/components/core/core.section';
-import Content from '@/components/core/core.content';
+import Section from '@/components/core/coreSection';
+import Content from '@/components/core/coreContent';
 import Link from 'next/link';
 
 const S = {
