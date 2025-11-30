@@ -3,7 +3,7 @@ import mq from '@/util/mq';
 import { ReactNode } from 'react';
 import { DynamicStyle } from 'facepaint';
 
-export interface ISection {
+export interface IContent {
   children: ReactNode;
   className?: string;
   css?: CSSObject | DynamicStyle[];
@@ -14,12 +14,15 @@ const S = {
     mq({
       maxWidth: '390px',
       margin: '0 auto',
-      padding: ['0 25px'],
-      background: '#ccc',
-    })
+    }),
+    (props: { css: CSSObject | DynamicStyle[] | undefined }) => props.css
   ),
 };
 
-export default function Content({ children, ...rest }: ISection) {
-  return <S.Content {...rest}>{children}</S.Content>;
+export default function Content({ children, className, css }: IContent) {
+  return (
+    <S.Content css={css} className={className}>
+      {children}
+    </S.Content>
+  );
 }
