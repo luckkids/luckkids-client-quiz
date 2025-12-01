@@ -6,9 +6,7 @@ export const Constants = {
 };
 
 export interface QuizOption {
-  emoji: string;
   text: string;
-  type: string;
 }
 
 export interface QuizQuestion {
@@ -20,79 +18,71 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     question: '아침에 일어났을 때, 제일 먼저 떠오르는 생각은?',
     options: [
-      { emoji: '🐰', text: '오늘은 뭔가 새롭게 시작하고 싶어!', type: '목' },
-      { emoji: '☀️', text: '오늘 누구랑 점심 먹지?', type: '화' },
-      { emoji: '🍀', text: '오늘 해야 할 걸 차근차근 정리하자.', type: '토' },
-      { emoji: '💎', text: '오늘 일정 효율적으로 배치해야지.', type: '금' },
-      {
-        emoji: '☁️',
-        text: '조용히 커피 한 잔 하며 마음 정리부터.',
-        type: '수',
-      },
+      { text: '오늘은 뭔가 새롭게 시작하고 싶어!' },
+      { text: '오늘 누구랑 점심 먹지?' },
+      { text: '오늘 해야 할 걸 차근차근 정리하자.' },
+      { text: '오늘 일정 효율적으로 배치해야지.' },
+      { text: '조용히 커피 한 잔 하며 마음 정리부터.' },
     ],
   },
   {
     question: '운이 좋은 날, 당신은 어떤 행동을 하나요?',
     options: [
-      {
-        emoji: '🐰',
-        text: '새로운 시도를 하거나 즉흥 여행을 간다',
-        type: '목',
-      },
-      { emoji: '☀️', text: '사람들에게 연락하고 기분을 나눈다', type: '화' },
-      { emoji: '🍀', text: '그간 미뤘던 일들을 정리한다', type: '토' },
-      { emoji: '💎', text: '미뤄둔 계획을 실행에 옮긴다', type: '금' },
-      { emoji: '☁️', text: '혼자 시간을 보내며 여운을 즐긴다', type: '수' },
+      { text: '새로운 시도를 하거나 즉흥 여행을 간다' },
+      { text: '사람들에게 연락하고 기분을 나눈다' },
+      { text: '그간 미뤘던 일들을 정리한다' },
+      { text: '미뤄둔 계획을 실행에 옮긴다' },
+      { text: '혼자 시간을 보내며 여운을 즐긴다' },
     ],
   },
   {
     question: '일이 막히거나 스트레스 받을 때 나는…',
     options: [
-      { emoji: '🐰', text: '바로 다른 방법을 시도한다', type: '목' },
-      { emoji: '☀️', text: '주변 사람들과 수다 떤다', type: '화' },
-      { emoji: '🍀', text: '잠시 쉬며 계획을 다시 세운다', type: '토' },
-      { emoji: '💎', text: '우선순위를 다시 정리한다', type: '금' },
-      { emoji: '☁️', text: '음악을 들으며 감정을 가라앉힌다', type: '수' },
+      { text: '바로 다른 방법을 시도한다' },
+      { text: '주변 사람들과 수다 떤다' },
+      { text: '잠시 쉬며 계획을 다시 세운다' },
+      { text: '우선순위를 다시 정리한다' },
+      { text: '음악을 들으며 감정을 가라앉힌다' },
     ],
   },
   {
     question: '지금의 나를 한마디로 표현한다면?',
     options: [
-      { emoji: '🐰', text: '앞으로 나아가는 중!', type: '목' },
-      { emoji: '☀️', text: '사람들에게 에너지를 주는 중!', type: '화' },
-      { emoji: '🍀', text: '균형을 찾는 중!', type: '토' },
-      { emoji: '💎', text: '디테일을 다듬는 중!', type: '금' },
-      { emoji: '☁️', text: '내면을 정리하는 중.', type: '수' },
+      { text: '앞으로 나아가는 중!' },
+      { text: '사람들에게 에너지를 주는 중!' },
+      { text: '균형을 찾는 중!' },
+      { text: '디테일을 다듬는 중!' },
+      { text: '내면을 정리하는 중.' },
     ],
   },
   {
     question: "나에게 '행운'은 어떤 모습에 가까울까?",
     options: [
-      { emoji: '🐰', text: '새로운 기회가 열릴 때', type: '목' },
-      { emoji: '☀️', text: '좋은 인연을 만날 때', type: '화' },
-      { emoji: '🍀', text: '마음이 편안할 때', type: '토' },
-      { emoji: '💎', text: '일이 완벽하게 마무리될 때', type: '금' },
-      { emoji: '☁️', text: '마음이 가벼워질 때', type: '수' },
+      { text: '새로운 기회가 열릴 때' },
+      { text: '좋은 인연을 만날 때' },
+      { text: '마음이 편안할 때' },
+      { text: '일이 완벽하게 마무리될 때' },
+      { text: '마음이 가벼워질 때' },
     ],
   },
   {
     question: '주말 오전, 당신은 주로 무엇을 하나요?',
     options: [
-      { emoji: '🐰', text: '운동하거나 산책하며 기분 전환', type: '목' },
-      { emoji: '☀️', text: '친구에게 연락해 즉흥 약속', type: '화' },
-      { emoji: '🍀', text: '청소하거나 정리', type: '토' },
-      { emoji: '💎', text: '계획 세우거나 정리정돈', type: '금' },
-      { emoji: '☁️', text: '음악 들으며 늦잠', type: '수' },
+      { text: '운동하거나 산책하며 기분 전환' },
+      { text: '친구에게 연락해 즉흥 약속' },
+      { text: '청소하거나 정리' },
+      { text: '계획 세우거나 정리정돈' },
+      { text: '음악 들으며 늦잠' },
     ],
   },
   {
     question: '요즘 가장 자주 드는 생각은?',
     options: [
-      { emoji: '🐰', text: '새로운 걸 해보고 싶어.', type: '목' },
-      { emoji: '☀️', text: '좋은 사람들과 함께하고 싶어.', type: '화' },
-      { emoji: '🍀', text: '지금 페이스가 나쁘지 않아.', type: '토' },
-      { emoji: '💎', text: '더 효율적인 방법이 없을까?', type: '금' },
-      { emoji: '☁️', text: '조용히 나를 돌보고 싶어.', type: '수' },
+      { text: '새로운 걸 해보고 싶어.' },
+      { text: '좋은 사람들과 함께하고 싶어.' },
+      { text: '지금 페이스가 나쁘지 않아.' },
+      { text: '더 효율적인 방법이 없을까?' },
+      { text: '조용히 나를 돌보고 싶어.' },
     ],
   },
 ];
