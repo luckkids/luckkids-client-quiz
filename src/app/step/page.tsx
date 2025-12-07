@@ -139,19 +139,6 @@ export default function Home() {
   const { nickname, step, setAnswer, getAnswer, clearAnswers, setStep } =
     useAnswerState();
 
-  const handleAnswerSelect = (quizIndex: number, answerIndex: number) => {
-    const answerContent = QUIZ_QUESTIONS[quizIndex].options[answerIndex];
-    setAnswer(quizIndex, answerIndex, answerContent.text);
-  };
-
-  const handleReset = () => {
-    clearAnswers();
-  };
-
-  const allAnswered = QUIZ_QUESTIONS.every(
-    (_, index) => getAnswer(index) !== undefined
-  );
-
   console.log('step', step);
 
   return (
