@@ -3,15 +3,11 @@ import styled from '@emotion/styled';
 import mq from '@/util/mq';
 import Section from '@/components/core/coreSection';
 import Content from '@/components/core/coreContent';
-import Link from 'next/link';
-import Image from 'next/image';
 import { useAnswerState } from '@/hooks/useAnswerState';
-import { useState } from 'react';
 import { QUIZ_QUESTIONS } from '@/constants';
 import QuizNickname from '@/components/quiz/quizNickname';
 import QuizNavigation from '@/components/quiz/quizNavigation';
 import QuizProgress from '@/components/quiz/quizProgress';
-import quizProgressbar from '@/components/quiz/quizProgressbar';
 import QuizProgressbar from '@/components/quiz/quizProgressbar';
 
 const S = {

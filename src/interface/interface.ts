@@ -1,5 +1,3 @@
-import { Answer } from '@/store/answerStore';
-
 export interface IQuizProgress {
   question: string;
   options: IQuizOptions[];
