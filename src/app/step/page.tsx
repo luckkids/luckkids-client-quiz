@@ -136,8 +136,7 @@ const S = {
 };
 
 export default function Home() {
-  const { nickname, step, setAnswer, getAnswer, clearAnswers, setStep } =
-    useAnswerState();
+  const { nickname, step, setStep } = useAnswerState();
 
   console.log('step', step);
 
