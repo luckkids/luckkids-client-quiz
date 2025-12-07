@@ -5,119 +5,190 @@ import Section from '@/components/core/coreSection';
 import Content from '@/components/core/coreContent';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useAnswerState } from '@/hooks/useAnswerState';
+import { useState } from 'react';
+import { QUIZ_QUESTIONS } from '@/constants';
+import QuizNickname from '@/components/quiz/quizNickname';
+import QuizNavigation from '@/components/quiz/quizNavigation';
+import QuizProgress from '@/components/quiz/quizProgress';
+import quizProgressbar from '@/components/quiz/quizProgressbar';
+import QuizProgressbar from '@/components/quiz/quizProgressbar';
 
 const S = {
-  TextWrap: styled.article(
+  Container: styled.div(
     mq({
-      background: '#9BB77B',
+      width: '100%',
+    })
+  ),
+  Title: styled.h1(
+    mq({
+      fontSize: ['24px', '32px'],
+      marginBottom: '30px',
       textAlign: 'center',
-      color: '#24303F',
-      padding: ['79px 0 36px'],
-      span: {
-        fontSize: ['17px'],
-        lineHeight: 22 / 17,
-        fontWeight: 500,
-      },
-      h2: {
-        fontSize: ['40px'],
-        lineHeight: 1,
-        fontWeight: 700,
-        marginTop: ['12px'],
+      color: '#333',
+    })
+  ),
+  SectionTitle: styled.h2(
+    mq({
+      fontSize: ['18px', '24px'],
+      marginBottom: '20px',
+      color: '#44763b',
+    })
+  ),
+  Input: styled.input(
+    mq({
+      width: '100%',
+      padding: '12px 16px',
+      fontSize: ['14px', '16px'],
+      border: '2px solid #ddd',
+      borderRadius: '8px',
+      marginBottom: '20px',
+      '&:focus': {
+        outline: 'none',
+        borderColor: '#44763b',
       },
     })
   ),
-  Figure: styled.figure(
+  Button: styled.button(
     mq({
-      img: {
-        width: '100%',
-      },
-    })
-  ),
-  Caption: styled.figcaption(
-    mq({
-      padding: ['10px 16px'],
-      fontSize: ['20px'],
-      lineHeight: 25 / 20,
+      fontSize: ['17px'],
+      lineHeight: 22 / 17,
       fontWeight: 500,
-      display: 'flex',
-      alignItems: 'center',
-      background: '#F1F4EC',
-      strong: {
-        display: 'flex',
-        fontSize: ['22px'],
-        fontWeight: 700,
-        width: ['50px'],
-        height: ['50px'],
-        background: '#9BB77B',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: ['10px'],
-        borderRadius: ['8px'],
-        color: '#fff',
+      color: '#fff',
+      backgroundColor: '#000',
+      display: 'block',
+      textAlign: 'center',
+      padding: ['17px 0 18px'],
+      borderRadius: ['15px'],
+      border: 'none',
+      width: '100%',
+      margin: ['0 5px'],
+      '&:disabled': {
+        background: '#DCDDDD',
+        cursor: 'not-allowed',
       },
     })
   ),
-  P: styled.p(
+  SecondaryButton: styled.button(
     mq({
-      fontSize: ['16px'],
-      lineHeight: 24 / 16,
-      padding: ['12px 16px'],
+      padding: ['12px 24px', '14px 28px'],
+      fontSize: ['14px', '16px'],
+      background: '#fff',
+      color: '#44763b',
+      border: '2px solid #44763b',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      marginRight: '10px',
+      marginBottom: '10px',
+      '&:hover': {
+        background: '#f5f5f5',
+      },
     })
   ),
-  ContentWrapper: styled.div(),
-  ButtonWrapper: styled.div(
+  QuizContainer: styled.div(
     mq({
-      padding: ['30px 25px'],
+      width: '100%',
+      marginBottom: '30px',
+    })
+  ),
+  QuizQuestion: styled.h3(
+    mq({
+      fontSize: ['16px', '20px'],
+      marginBottom: '20px',
+      color: '#333',
+    })
+  ),
+  OptionButton: styled.button<{ isSelected: boolean }>((props) =>
+    mq({
+      width: '100%',
+      padding: '14px 20px',
+      fontSize: ['14px', '16px'],
+      marginBottom: '12px',
+      textAlign: 'left',
+      border: `2px solid ${props.isSelected ? '#44763b' : '#ddd'}`,
+      borderRadius: '8px',
+      background: props.isSelected ? '#f0f7ef' : '#fff',
+      color: props.isSelected ? '#44763b' : '#333',
+      cursor: 'pointer',
+      transition: 'all 0.2s',
+      '&:hover': {
+        borderColor: '#44763b',
+        background: props.isSelected ? '#f0f7ef' : '#f9f9f9',
+      },
+    })
+  ),
+  StatusText: styled.p(
+    mq({
+      marginTop: '15px',
+      padding: '12px',
+      background: '#f5f5f5',
+      borderRadius: '8px',
+      fontSize: ['12px', '14px'],
+      color: '#666',
+    })
+  ),
+  InfoBox: styled.div(
+    mq({
+      padding: '15px',
+      background: '#f0f7ef',
+      borderRadius: '8px',
+      marginTop: '15px',
+      fontSize: ['12px', '14px'],
+      color: '#44763b',
     })
   ),
 };
 
-const Button = styled(Link)(
-  mq({
-    fontSize: ['17px'],
-    lineHeight: 22 / 17,
-    fontWeight: 500,
-    color: '#fff',
-    backgroundColor: '#000',
-    display: 'block',
-    textAlign: 'center',
-    padding: ['17px 0 18px'],
-    borderRadius: ['15px'],
-  })
-);
-
 export default function Home() {
+  const { nickname, step, setAnswer, getAnswer, clearAnswers, setStep } =
+    useAnswerState();
+
+  const handleAnswerSelect = (quizIndex: number, answerIndex: number) => {
+    const answerContent = QUIZ_QUESTIONS[quizIndex].options[answerIndex];
+    setAnswer(quizIndex, answerIndex, answerContent.text);
+  };
+
+  const handleReset = () => {
+    clearAnswers();
+  };
+
+  const allAnswered = QUIZ_QUESTIONS.every(
+    (_, index) => getAnswer(index) !== undefined
+  );
+
+  console.log('step', step);
+
   return (
     <Section>
       <Content
         css={mq({
+          padding: ['0 20px 30px 20px'],
+          width: '100%',
+          minHeight: '100vh',
           display: 'flex',
+          alignItems: 'center',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          height: '100vh',
         })}
       >
-        <S.ContentWrapper>
-          <S.TextWrap>
-            <span>내 운이 트이는 방법은?</span>
-            <h2>개운법 테스트</h2>
-          </S.TextWrap>
-          <S.Figure>
-            <S.Caption>
-              <strong>1</strong>개운법 알아보기
-            </S.Caption>
-            <Image src="/img/main-visual.png" alt="그래도 해야지 어떡해" />
-          </S.Figure>
-          <S.P>
-            온 마음을 쏟고, 밤낮 없이 노력해도 막히는 때가 있다. <br />
-            그렇다고 언제까지 행운을 기다릴 수만은 없으니까,
-            <br />
-            <strong>내 운이 트이는 개운법(開運法)</strong>을 알아가보자!
-          </S.P>
-        </S.ContentWrapper>
-        <S.ButtonWrapper>
-          <Button href={'/'}>나의 개운법 알아보기</Button>
-        </S.ButtonWrapper>
+        <S.Container>
+          <QuizNavigation />
+          {step === undefined ? (
+            /*닉네임*/
+            <QuizNickname />
+          ) : (
+            <>
+              <QuizProgressbar step={step} />
+              {/*퀴즈*/}
+              <QuizProgress {...QUIZ_QUESTIONS[step]} />
+            </>
+          )}
+        </S.Container>
+        {step === undefined && (
+          <S.Button disabled={!nickname?.trim()} onClick={() => setStep(0)}>
+            다음
+          </S.Button>
+        )}
       </Content>
     </Section>
   );

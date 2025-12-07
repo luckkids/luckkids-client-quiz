@@ -16,7 +16,7 @@ export interface QuizQuestion {
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
-    question: '아침에 일어났을 때, 제일 먼저 떠오르는 생각은?',
+    question: '아침에 일어났을 때, \n제일 먼저 떠오르는 생각은?',
     options: [
       { text: '오늘은 뭔가 새롭게 시작하고 싶어!' },
       { text: '오늘 누구랑 점심 먹지?' },
@@ -26,7 +26,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     ],
   },
   {
-    question: '운이 좋은 날, 당신은 어떤 행동을 하나요?',
+    question: '운이 좋은 날, \n당신은 어떤 행동을 하나요?',
     options: [
       { text: '새로운 시도를 하거나 즉흥 여행을 간다' },
       { text: '사람들에게 연락하고 기분을 나눈다' },
@@ -36,7 +36,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     ],
   },
   {
-    question: '일이 막히거나 스트레스 받을 때 나는…',
+    question: '일이 막히거나 \n스트레스 받을 때 나는…',
     options: [
       { text: '바로 다른 방법을 시도한다' },
       { text: '주변 사람들과 수다 떤다' },
@@ -46,7 +46,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     ],
   },
   {
-    question: '지금의 나를 한마디로 표현한다면?',
+    question: '지금의 나를 \n한마디로 표현한다면?',
     options: [
       { text: '앞으로 나아가는 중!' },
       { text: '사람들에게 에너지를 주는 중!' },
@@ -56,7 +56,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     ],
   },
   {
-    question: "나에게 '행운'은 어떤 모습에 가까울까?",
+    question: "나에게 '행운'은 \n어떤 모습에 가까울까?",
     options: [
       { text: '새로운 기회가 열릴 때' },
       { text: '좋은 인연을 만날 때' },
@@ -66,7 +66,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     ],
   },
   {
-    question: '주말 오전, 당신은 주로 무엇을 하나요?',
+    question: '주말 오전, \n당신은 주로 무엇을 하나요?',
     options: [
       { text: '운동하거나 산책하며 기분 전환' },
       { text: '친구에게 연락해 즉흥 약속' },
@@ -76,7 +76,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     ],
   },
   {
-    question: '요즘 가장 자주 드는 생각은?',
+    question: '요즘 가장 자주 드는 \n생각은?',
     options: [
       { text: '새로운 걸 해보고 싶어.' },
       { text: '좋은 사람들과 함께하고 싶어.' },

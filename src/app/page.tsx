@@ -106,7 +106,12 @@ export default function Home() {
             <S.Caption>
               <strong>1</strong>개운법 알아보기
             </S.Caption>
-            <Image src="/img/main-visual.png" alt="그래도 해야지 어떡해" />
+            <Image
+              width={'390'}
+              height={'300'}
+              src="/img/main-visual.png"
+              alt="그래도 해야지 어떡해"
+            />
           </S.Figure>
           <S.P>
             온 마음을 쏟고, 밤낮 없이 노력해도 막히는 때가 있다. <br />
@@ -116,7 +121,7 @@ export default function Home() {
           </S.P>
         </S.ContentWrapper>
         <S.ButtonWrapper>
-          <Button href={'/'}>나의 개운법 알아보기</Button>
+          <Button href={'/step'}>나의 개운법 알아보기</Button>
         </S.ButtonWrapper>
       </Content>
     </Section>

@@ -4,12 +4,15 @@ export interface Answer {
   quizIndex: number;
   answerIndex: number;
   answerContent: string;
+  step?: number;
 }
 
 interface AnswerState {
   nickname: string | null;
   answers: Answer[];
+  step?: number;
   setNickname: (nickname: string) => void;
+  setStep: (step?: number) => void;
   setAnswer: (
     quizIndex: number,
     answerIndex: number,
@@ -21,7 +24,12 @@ interface AnswerState {
 
 export const useAnswerStore = create<AnswerState>((set, get) => ({
   nickname: null,
+  step: undefined,
   answers: [],
+
+  setStep: (step?: number) => {
+    set({ step });
+  },
 
   setNickname: (nickname: string) => {
     set({ nickname });
