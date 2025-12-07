@@ -3,13 +3,18 @@ import { create } from 'zustand';
 export interface Answer {
   quizIndex: number;
   answerIndex: number;
+  answerContent: string;
 }
 
 interface AnswerState {
   nickname: string | null;
   answers: Answer[];
   setNickname: (nickname: string) => void;
-  setAnswer: (quizIndex: number, answerIndex: number) => void;
+  setAnswer: (
+    quizIndex: number,
+    answerIndex: number,
+    answerContent: string
+  ) => void;
   getAnswer: (quizIndex: number) => number | undefined;
   clearAnswers: () => void;
 }
@@ -22,7 +27,11 @@ export const useAnswerStore = create<AnswerState>((set, get) => ({
     set({ nickname });
   },
 
-  setAnswer: (quizIndex: number, answerIndex: number) => {
+  setAnswer: (
+    quizIndex: number,
+    answerIndex: number,
+    answerContent: string
+  ) => {
     const { answers } = get();
     const existingAnswerIndex = answers.findIndex(
       (answer) => answer.quizIndex === quizIndex
@@ -31,11 +40,15 @@ export const useAnswerStore = create<AnswerState>((set, get) => ({
     if (existingAnswerIndex !== -1) {
       // 같은 퀴즈에 대한 답변이 있으면 덮어쓰기
       const newAnswers = [...answers];
-      newAnswers[existingAnswerIndex] = { quizIndex, answerIndex };
+      newAnswers[existingAnswerIndex] = {
+        quizIndex,
+        answerIndex,
+        answerContent,
+      };
       set({ answers: newAnswers });
     } else {
       // 새로운 답변 추가
-      set({ answers: [...answers, { quizIndex, answerIndex }] });
+      set({ answers: [...answers, { quizIndex, answerIndex, answerContent }] });
     }
   },
 
