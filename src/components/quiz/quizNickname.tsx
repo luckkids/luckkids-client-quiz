@@ -47,7 +47,7 @@ export default function QuizNickname() {
         <S.Input
           name={'nickname'}
           type="text"
-          placeholder="닉네임을 입력하세요"
+          placeholder="7자 이내로 입력해주세요!"
           value={nickname ?? ''}
           onChange={(e) => setNickname(e.target.value)}
         />

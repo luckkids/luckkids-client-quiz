@@ -1,12 +1,20 @@
 'use client';
 import Section from '@/components/core/coreSection';
 import Content from '@/components/core/coreContent';
+import Image from 'next/image';
 
-export default function About() {
+export default function Result() {
   return (
     <Section>
       <Content>
-        <div>result</div>
+        <figure>
+          <Image
+            width={'385'}
+            height={'670'}
+            src="/img/result-naby.jpg"
+            alt="result"
+          />
+        </figure>
       </Content>
     </Section>
   );
