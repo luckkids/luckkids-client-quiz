@@ -17,10 +17,14 @@ const S = {
   ),
 };
 
-export default function QuizNavigation() {
+interface IProps {
+  onClick: () => void;
+}
+
+export default function QuizNavigation(props: IProps) {
   return (
     <S.Wrapper>
-      <S.SvgWrapper>
+      <S.SvgWrapper onClick={() => props.onClick()}>
         <svg
           width="10"
           height="18"

@@ -1,3 +1,5 @@
+import { IQuizQuestion } from '@/interface/interface';
+
 export const Constants = {
   BREAKPOINT_MOBILE: 390,
   BREAKPOINT_TABLET: 1024,
@@ -5,17 +7,7 @@ export const Constants = {
   MQ_RATIO: 1,
 };
 
-export interface QuizOption {
-  text: string;
-  type: 'tokkingi' | 'taeyangi' | 'naby' | 'turkeyi' | 'gurumi';
-}
-
-export interface QuizQuestion {
-  question: string;
-  options: QuizOption[];
-}
-
-export const QUIZ_QUESTIONS: QuizQuestion[] = [
+export const QUIZ_QUESTIONS: IQuizQuestion[] = [
   {
     question: '아침에 일어났을 때, \n제일 먼저 떠오르는 생각은?',
     options: [

@@ -1,4 +1,4 @@
-import { IQuizProgress } from '@/interface/interface';
+import { IQuizAnswer, IQuizProgress } from '@/interface/interface';
 import styled from '@emotion/styled';
 import mq from '@/util/mq';
 import { useAnswerState } from '@/hooks/useAnswerState';
@@ -55,6 +55,10 @@ export default function QuizProgress(props: IQuizProgress) {
                 } else {
                   navigation.push('/result');
                 }
+                props.setAnswer((prev: IQuizAnswer) => ({
+                  ...prev,
+                  [`${step}`]: quizOption.type,
+                }));
               }}
             >
               <S.QuizButton type={'button'}>{quizOption.text}</S.QuizButton>

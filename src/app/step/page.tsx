@@ -9,6 +9,9 @@ import QuizNickname from '@/components/quiz/quizNickname';
 import QuizNavigation from '@/components/quiz/quizNavigation';
 import QuizProgress from '@/components/quiz/quizProgress';
 import QuizProgressbar from '@/components/quiz/quizProgressbar';
+import { useState } from 'react';
+import { IQuizAnswer } from '@/interface/interface';
+import { useRouter } from 'next/navigation';
 
 const S = {
   Container: styled.div(
@@ -136,9 +139,11 @@ const S = {
 };
 
 export default function Home() {
+  const navigation = useRouter();
   const { nickname, step, setStep } = useAnswerState();
+  const [answer, setAnswer] = useState<IQuizAnswer>({});
 
-  console.log('step', step);
+  console.log('answer', answer);
 
   return (
     <Section>
@@ -154,7 +159,17 @@ export default function Home() {
         })}
       >
         <S.Container>
-          <QuizNavigation />
+          <QuizNavigation
+            onClick={() => {
+              if (step === undefined) {
+                navigation.push('/');
+              } else if (step > 0) {
+                setStep(step - 1);
+              } else {
+                setStep(undefined);
+              }
+            }}
+          />
           {step === undefined ? (
             /*닉네임*/
             <QuizNickname />
@@ -162,7 +177,7 @@ export default function Home() {
             <>
               <QuizProgressbar step={step} />
               {/*퀴즈*/}
-              <QuizProgress {...QUIZ_QUESTIONS[step]} />
+              <QuizProgress {...QUIZ_QUESTIONS[step]} setAnswer={setAnswer} />
             </>
           )}
         </S.Container>
