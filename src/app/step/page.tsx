@@ -9,9 +9,10 @@ import QuizNickname from '@/components/quiz/quizNickname';
 import QuizNavigation from '@/components/quiz/quizNavigation';
 import QuizProgress from '@/components/quiz/quizProgress';
 import QuizProgressbar from '@/components/quiz/quizProgressbar';
-import { useState } from 'react';
-import { IQuizAnswer } from '@/interface/interface';
+import { useEffect, useMemo, useState } from 'react';
+import { IQuizAnswer, TQuizType, TResult } from '@/interface/interface';
 import { useRouter } from 'next/navigation';
+import QuizLoading from '@/app/step/QuizLoading';
 
 const S = {
   Container: styled.div(
@@ -138,12 +139,54 @@ const S = {
   ),
 };
 
+const getResultType = (ans: IQuizAnswer) => {
+  const resultTypeScore: TResult = {};
+  let mostPic: TQuizType | undefined = undefined;
+  let currentMostScore = 0;
+
+  //선택한 옵션 개수 카운트
+  for (const value of Object.values(ans)) {
+    resultTypeScore[value] = (resultTypeScore[value] || 0) + 1;
+  }
+
+  //제일 높은 타입 리턴
+  for (const [k, v] of Object.entries(resultTypeScore)) {
+    if (v > currentMostScore) {
+      mostPic = k as TQuizType;
+      currentMostScore = v;
+    }
+  }
+
+  return mostPic;
+};
+
 export default function Home() {
   const navigation = useRouter();
-  const { nickname, step, setStep } = useAnswerState();
+  const { nickname, step, resultType, setStep, setResultType } =
+    useAnswerState();
   const [answer, setAnswer] = useState<IQuizAnswer>({});
 
-  console.log('answer', answer);
+  useEffect(() => {
+    if (step !== 7) return;
+    setResultType(getResultType(answer));
+  }, [answer, step]);
+
+  const stepByRender = useMemo(() => {
+    switch (step) {
+      case undefined:
+        return <QuizNickname />;
+      case 7:
+        return <QuizLoading />;
+      default:
+        return (
+          <>
+            <QuizProgressbar step={step} />
+            {/*퀴즈*/}
+            <QuizProgress {...QUIZ_QUESTIONS[step]} setAnswer={setAnswer} />
+          </>
+        );
+    }
+  }, [step]);
 
   return (
     <Section>
@@ -159,27 +202,20 @@ export default function Home() {
         })}
       >
         <S.Container>
-          <QuizNavigation
-            onClick={() => {
-              if (step === undefined) {
-                navigation.push('/');
-              } else if (step > 0) {
-                setStep(step - 1);
-              } else {
-                setStep(undefined);
-              }
-            }}
-          />
-          {step === undefined ? (
-            /*닉네임*/
-            <QuizNickname />
-          ) : (
-            <>
-              <QuizProgressbar step={step} />
-              {/*퀴즈*/}
-              <QuizProgress {...QUIZ_QUESTIONS[step]} setAnswer={setAnswer} />
-            </>
+          {step !== 7 && (
+            <QuizNavigation
+              onClick={() => {
+                if (step === undefined) {
+                  navigation.push('/');
+                } else if (step > 0) {
+                  setStep(step - 1);
+                } else {
+                  setStep(undefined);
+                }
+              }}
+            />
           )}
+          {stepByRender}
         </S.Container>
         {step === undefined && (
           <S.Button disabled={!nickname?.trim()} onClick={() => setStep(0)}>

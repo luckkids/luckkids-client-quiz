@@ -1,4 +1,4 @@
-import { IQuizAnswer, IQuizProgress } from '@/interface/interface';
+import { IQuizAnswer, IQuizProgress, TResult } from '@/interface/interface';
 import styled from '@emotion/styled';
 import mq from '@/util/mq';
 import { useAnswerState } from '@/hooks/useAnswerState';
@@ -38,8 +38,8 @@ const S = {
 };
 
 export default function QuizProgress(props: IQuizProgress) {
-  const navigation = useRouter();
   const { step, setStep } = useAnswerState();
+
   return (
     <>
       <S.QuizTitle>{props.question}</S.QuizTitle>
@@ -50,10 +50,8 @@ export default function QuizProgress(props: IQuizProgress) {
               key={`${quizOption}-${i}`}
               onClick={() => {
                 console.log('step', step);
-                if (step !== undefined && step <= 5) {
+                if (step !== undefined && step <= 6) {
                   setStep(step + 1);
-                } else {
-                  navigation.push('/result');
                 }
                 props.setAnswer((prev: IQuizAnswer) => ({
                   ...prev,

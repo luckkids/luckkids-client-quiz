@@ -7,6 +7,10 @@ export interface IQuizOption {
   type: TQuizType;
 }
 
+export type TResult = {
+  [key in TQuizType]?: number;
+};
+
 export interface IQuizQuestion {
   question: string;
   options: IQuizOption[];
