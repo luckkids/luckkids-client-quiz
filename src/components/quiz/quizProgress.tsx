@@ -1,8 +1,7 @@
-import { IQuizAnswer, IQuizProgress, TResult } from '@/interface/interface';
+import { IQuizAnswer, IQuizProgress } from '@/interface/interface';
 import styled from '@emotion/styled';
 import mq from '@/util/mq';
 import { useAnswerState } from '@/hooks/useAnswerState';
-import { useRouter } from 'next/navigation';
 
 const S = {
   QuizTitle: styled.h2(

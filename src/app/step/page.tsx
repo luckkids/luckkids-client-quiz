@@ -162,8 +162,7 @@ const getResultType = (ans: IQuizAnswer) => {
 
 export default function Home() {
   const navigation = useRouter();
-  const { nickname, step, resultType, setStep, setResultType } =
-    useAnswerState();
+  const { nickname, step, setStep, setResultType } = useAnswerState();
   const [answer, setAnswer] = useState<IQuizAnswer>({});
 
   useEffect(() => {
