@@ -5,8 +5,7 @@ import mq from '@/util/mq';
 import { useEffect, useState } from 'react';
 import { useAnswerState } from '@/hooks/useAnswerState';
 import { useRouter } from 'next/navigation';
-
-const POST_URL = 'https://api-luckkids.kro.kr/api/v1/fortuneTest';
+import { Constants } from '@/constants';
 
 const S = {
   Wrapper: styled.div(
@@ -49,7 +48,7 @@ export default function QuizLoading() {
     const onSubmit = async () => {
       const uuid = crypto.randomUUID().replace(/-/g, '');
       try {
-        const response = await fetch(POST_URL, {
+        const response = await fetch(Constants.POST_URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

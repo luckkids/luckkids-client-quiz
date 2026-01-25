@@ -6,6 +6,10 @@ import styled from '@emotion/styled';
 import mq from '@/util/mq';
 import { createImageSaveHandler } from '@/util/image';
 import { copyToClipboard, getShareContextInfo, share } from '@/util/share';
+import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { Constants } from '@/constants';
+import { TQuizType } from '@/interface/interface';
 
 const S = {
   Disclaimer: styled.span(
@@ -106,7 +110,31 @@ const S = {
   ),
 };
 
+interface IResponse {
+  id: string;
+  nickName: string;
+  resultType: TQuizType;
+}
+// 'tokkingi' | 'taeyangi' | 'naby' | 'turkeyi' | 'gurumi'
+const resultImage = (resultType: TQuizType) => {
+  switch (resultType) {
+    case 'tokkingi':
+      return '/img/result-naby.jpg';
+    case 'taeyangi':
+      return '/img/result-naby.jpg';
+    case 'naby':
+      return '/img/result-naby.jpg';
+    case 'turkeyi':
+      return '/img/result-naby.jpg';
+    case 'gurumi':
+      return '/img/result-naby.jpg';
+  }
+};
+
 export default function Result() {
+  const { uuid } = useParams();
+  const navigate = useRouter();
+  const [result, setResult] = useState<IResponse>();
   const handleImageContextMenu = createImageSaveHandler(
     '/apple-icon.png',
     'luckkids-icon.png'
@@ -126,6 +154,19 @@ export default function Result() {
       url: window.location.href,
     });
   };
+
+  useEffect(() => {
+    if (!uuid) navigate.push('/');
+
+    const getResult = async () => {
+      try {
+        const response = await fetch(Constants.POST_URL + uuid);
+        return response.json();
+      } catch {}
+    };
+
+    getResult().then((r) => setResult(r.data));
+  }, []);
 
   return (
     <Section>
@@ -158,7 +199,7 @@ export default function Result() {
         })}
       >
         <S.TextWrap>
-          <S.Title>행운아 도니 님의 개운법은 ‘시작'</S.Title>
+          <S.Title>행운아 {result?.nickName} 님의 개운법은 ‘시작'</S.Title>
           <p>
             개운 루틴이 어렵게 느껴질 때는, <br />
             <em>앱 ‘luckkids 럭키즈’</em>를 활용해보자.
@@ -191,11 +232,11 @@ export default function Result() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M12 2.83325C6.47667 2.83325 2 6.23005 2 10.4201C2 13.0253 3.73167 15.3231 6.36833 16.6892L5.25889 20.6691C5.16056 21.0215 5.57056 21.3017 5.885 21.0975L10.7483 17.9456C11.1583 17.9842 11.5756 18.007 12 18.007C17.5228 18.007 22 14.6096 22 10.4201C22 6.23005 17.5228 2.83325 12 2.83325Z"
                   fill="black"
-                  fill-opacity="0.902"
+                  fillOpacity="0.902"
                 />
               </svg>
             </S.Svg>
