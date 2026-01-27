@@ -173,6 +173,8 @@ export default function Result() {
     getResult().then((r) => setResult(r.data));
   }, []);
 
+  if (!result?.nickname) return <></>;
+
   return (
     <Section>
       <Content>
