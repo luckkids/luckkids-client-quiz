@@ -45,6 +45,7 @@ export default function QuizLoading() {
   }, []);
 
   useEffect(() => {
+    if (!resultType) return;
     const onSubmit = async () => {
       const uuid = crypto.randomUUID().replace(/-/g, '');
       try {
@@ -54,7 +55,7 @@ export default function QuizLoading() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            if: uuid,
+            uuid,
             nickname,
             resultType,
           }),
@@ -66,7 +67,7 @@ export default function QuizLoading() {
 
     onSubmit().then((r) => {
       if (r.statusCode === 200) {
-        navigation.push(`/result/${r.id}`);
+        navigation.push(`/result/${r.data.uuid}`);
       }
     });
   }, [resultType]);

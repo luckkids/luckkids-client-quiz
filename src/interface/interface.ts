@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
-export type TQuizType = 'tokkingi' | 'taeyangi' | 'naby' | 'turkeyi' | 'gurumi';
+export type TQuizType = 'TOKKINGI' | 'TAEYANGI' | 'NABY' | 'TURKEYI' | 'GURUMI';
 
 export interface IQuizOption {
   text: string;

@@ -112,21 +112,23 @@ const S = {
 
 interface IResponse {
   id: string;
-  nickName: string;
+  nickname: string;
   resultType: TQuizType;
 }
-// 'tokkingi' | 'taeyangi' | 'naby' | 'turkeyi' | 'gurumi'
-const resultImage = (resultType: TQuizType) => {
+
+const resultImage = (resultType?: TQuizType) => {
   switch (resultType) {
-    case 'tokkingi':
+    case 'TOKKINGI':
+      return '/img/result-tokkingi.jpg';
+    case 'TAEYANGI':
+      return '/img/result-taeyangi.jpg';
+    case 'NABY':
       return '/img/result-naby.jpg';
-    case 'taeyangi':
-      return '/img/result-naby.jpg';
-    case 'naby':
-      return '/img/result-naby.jpg';
-    case 'turkeyi':
-      return '/img/result-naby.jpg';
-    case 'gurumi':
+    case 'TURKEYI':
+      return '/img/result-turkeyi.jpg';
+    case 'GURUMI':
+      return '/img/result-gurumi.jpg';
+    default:
       return '/img/result-naby.jpg';
   }
 };
@@ -152,6 +154,9 @@ export default function Result() {
     await share({
       title: '럭키즈 오행 테스트',
       url: window.location.href,
+      ...(result?.nickname && {
+        text: `${result?.nickname}님의 오행 결과를 확인해 보세요!`,
+      }),
     });
   };
 
@@ -160,7 +165,7 @@ export default function Result() {
 
     const getResult = async () => {
       try {
-        const response = await fetch(Constants.POST_URL + uuid);
+        const response = await fetch(`${Constants.POST_URL}?uuid=${uuid}`);
         return response.json();
       } catch {}
     };
@@ -173,7 +178,7 @@ export default function Result() {
       <Content>
         <figure>
           <img
-            src="/img/result-naby.jpg"
+            src={resultImage(result?.resultType)}
             alt=""
             style={{ width: '100%' }}
             onContextMenu={handleImageContextMenu}
@@ -199,7 +204,7 @@ export default function Result() {
         })}
       >
         <S.TextWrap>
-          <S.Title>행운아 {result?.nickName} 님의 개운법은 ‘시작'</S.Title>
+          <S.Title>행운아 {result?.nickname} 님의 개운법은 ‘시작'</S.Title>
           <p>
             개운 루틴이 어렵게 느껴질 때는, <br />
             <em>앱 ‘luckkids 럭키즈’</em>를 활용해보자.
