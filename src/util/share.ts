@@ -82,12 +82,11 @@ export function isShareSupported(): boolean {
 
   // HTTPS 또는 localhost가 아닌 경우 false 반환
   if (typeof window !== 'undefined') {
-    const isSecureContext =
+    return (
       window.location.protocol === 'https:' ||
       window.location.hostname === 'localhost' ||
-      window.location.hostname === '127.0.0.1';
-
-    return isSecureContext;
+      window.location.hostname === '127.0.0.1'
+    );
   }
 
   return true;
