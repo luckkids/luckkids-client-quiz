@@ -1,15 +1,21 @@
 import { create } from 'zustand';
+import { TQuizType } from '@/interface/interface';
 
 export interface Answer {
   quizIndex: number;
   answerIndex: number;
   answerContent: string;
+  step?: number;
 }
 
 interface AnswerState {
   nickname: string | null;
   answers: Answer[];
+  resultType: TQuizType | undefined;
+  step?: number;
   setNickname: (nickname: string) => void;
+  setResultType: (resultType: TQuizType | undefined) => void;
+  setStep: (step?: number) => void;
   setAnswer: (
     quizIndex: number,
     answerIndex: number,
@@ -21,10 +27,20 @@ interface AnswerState {
 
 export const useAnswerStore = create<AnswerState>((set, get) => ({
   nickname: null,
+  step: undefined,
   answers: [],
+  resultType: undefined,
+
+  setStep: (step?: number) => {
+    set({ step });
+  },
 
   setNickname: (nickname: string) => {
     set({ nickname });
+  },
+
+  setResultType: (resultType: TQuizType | undefined) => {
+    set({ resultType });
   },
 
   setAnswer: (

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import mq from '@/util/mq';
 import { ReactNode } from 'react';
 
 export interface ISection {
@@ -8,11 +7,9 @@ export interface ISection {
 }
 
 const S = {
-  Section: styled.section(
-    mq({
-      background: 'linear-gradient(180deg, #A0DFFC, #70AFFB)',
-    })
-  ),
+  Section: styled.section({
+    minHeight: '100vh',
+  }),
 };
 
 export default function Section({ children, ...rest }: ISection) {

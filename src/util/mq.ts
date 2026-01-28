@@ -72,6 +72,5 @@ export default function mq(args: CSSObject) {
       });
     }
   });
-  console.log('fsBreakPoints(result)', fsBreakPoints(result));
   return fsBreakPoints(result);
 }

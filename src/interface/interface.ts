@@ -1,0 +1,27 @@
+import { Dispatch, SetStateAction } from 'react';
+
+export type TQuizType = 'TOKKINGI' | 'TAEYANGI' | 'NABY' | 'TURKEYI' | 'GURUMI';
+
+export interface IQuizOption {
+  text: string;
+  type: TQuizType;
+}
+
+export type TResult = {
+  [key in TQuizType]?: number;
+};
+
+export interface IQuizQuestion {
+  question: string;
+  options: IQuizOption[];
+}
+
+export interface IQuizProgress {
+  question: string;
+  options: IQuizOption[];
+  setAnswer: Dispatch<SetStateAction<IQuizAnswer>>;
+}
+
+export interface IQuizAnswer {
+  [key: string]: TQuizType;
+}

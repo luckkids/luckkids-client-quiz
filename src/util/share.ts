@@ -55,8 +55,8 @@ export async function share(data: ShareData): Promise<boolean> {
     // TODO: 공유할 내용을 실제 데이터로 수정 필요
     await navigator.share({
       title: data.title || '럭키즈 오행 테스트', // TODO: 실제 제목으로 변경
-      text: data.text || '나의 오행을 확인해보세요!', // TODO: 실제 설명으로 변경
       url: data.url || window.location.href, // TODO: 실제 공유 URL로 변경
+      ...(data.text && { text: data.text }),
       ...(data.files && { files: data.files }),
     });
     return true;
@@ -82,12 +82,11 @@ export function isShareSupported(): boolean {
 
   // HTTPS 또는 localhost가 아닌 경우 false 반환
   if (typeof window !== 'undefined') {
-    const isSecureContext =
+    return (
       window.location.protocol === 'https:' ||
       window.location.hostname === 'localhost' ||
-      window.location.hostname === '127.0.0.1';
-
-    return isSecureContext;
+      window.location.hostname === '127.0.0.1'
+    );
   }
 
   return true;
