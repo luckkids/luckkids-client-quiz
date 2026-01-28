@@ -5,7 +5,7 @@ export const Constants = {
   BREAKPOINT_TABLET: 1024,
   BREAKPOINT_DESKTOP: 1920,
   MQ_RATIO: 1,
-  POST_URL: '/api/v1/fortuneTest',
+  POST_URL: 'https://api-luckkids.kro.kr/api/v1/fortuneTest',
 };
 
 export const QUIZ_QUESTIONS: IQuizQuestion[] = [
