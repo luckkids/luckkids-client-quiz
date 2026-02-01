@@ -61,6 +61,7 @@ const S = {
       fontWeight: 'inherit',
       padding: ['18px 0'],
       background: '#FEE500',
+        color:'#191F28',
       borderRadius: ['16px'],
       cursor: 'pointer',
       gap: ['8px'],
