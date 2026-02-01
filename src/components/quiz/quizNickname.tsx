@@ -49,6 +49,7 @@ export default function QuizNickname() {
           type="text"
           placeholder="7자 이내로 입력해주세요!"
           value={nickname ?? ''}
+          maxLength={7}
           onChange={(e) => setNickname(e.target.value)}
         />
       </S.InputWrapper>
