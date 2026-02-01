@@ -61,7 +61,7 @@ const S = {
       fontWeight: 'inherit',
       padding: ['18px 0'],
       background: '#FEE500',
-        color:'#191F28',
+      color:'#191F28',
       borderRadius: ['16px'],
       cursor: 'pointer',
       gap: ['8px'],
@@ -69,6 +69,9 @@ const S = {
   ),
   RetryButton: styled.a(
     mq({
+      display:'flex',
+      alignItems:'center',
+      justifyContent:'center',
       flex: 1,
       fontSize: 'inherit',
       fontWeight: 'inherit',
