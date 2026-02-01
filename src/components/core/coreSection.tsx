@@ -9,6 +9,7 @@ export interface ISection {
 const S = {
   Section: styled.section({
     display:'flex',
+    flexDirection:'column',
     height:'100dvh'
   }),
 };
