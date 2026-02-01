@@ -26,6 +26,7 @@ const S = {
     mq({
       textAlign: 'center',
       fontSize: ['17px'],
+        color:'#000',
       padding: ['20px'],
       width: '100%',
       fontWeight: '500',

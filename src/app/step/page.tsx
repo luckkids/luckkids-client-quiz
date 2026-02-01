@@ -191,9 +191,9 @@ export default function Home() {
     <Section>
       <Content
         css={mq({
-          padding: ['0 20px 30px 20px'],
+          padding: ['20px 20px 30px 20px'],
           width: '100%',
-          minHeight: '100vh',
+            height:'100%',
           display: 'flex',
           alignItems: 'center',
           flexDirection: 'column',

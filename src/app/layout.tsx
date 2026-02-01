@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import React from 'react';
+import styled from "@emotion/styled";
 
 export const metadata: Metadata = {
   title: 'luckkids | 럭키즈',

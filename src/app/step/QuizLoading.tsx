@@ -14,7 +14,7 @@ const S = {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      height: '100vh',
+      height: '100dvh',
       paddingBottom: ['60px'],
     })
   ),

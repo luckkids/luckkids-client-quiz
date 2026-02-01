@@ -8,7 +8,8 @@ export interface ISection {
 
 const S = {
   Section: styled.section({
-    minHeight: '100vh',
+    display:'flex',
+    height:'100dvh'
   }),
 };
 
