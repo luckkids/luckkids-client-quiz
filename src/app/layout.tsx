@@ -1,40 +1,37 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import React from 'react';
-import styled from "@emotion/styled";
 
 export const metadata: Metadata = {
-  title: 'luckkids | 럭키즈',
+  title: '개운법 테스트 | 내 운이 트이는 방법은?',
   description:
-    '우리는 행운아! 행운을 키우지! 건강하고 긍정적인 몸과 마음을 만드는 습관이 우리의 행운을 키워줄 거예요.',
-  keywords: ['습관', '행운', '투두리스트', '계획', '스케쥴'],
-  metadataBase: new URL('https://info-luckkids.netlify.app'),
+    '언제까지나 행운을 기다릴 수만은 없으니까, 내 운이 트이는 개운법을 알아가보자!',
+  keywords: ['습관', '행운', '투두리스트', '계획', '스케쥴','오행'],
+  metadataBase: new URL('https://quiz.luckkids.co.kr/'),
   openGraph: {
     type: 'website',
-    title: 'luckkids | 럭키즈',
+    title: '개운법 테스트 | 내 운이 트이는 방법은?',
     description:
-      '우리는 행운아! 행운을 키우지! 건강하고 긍정적인 몸과 마음을 만드는 습관이 우리의 행운을 키워줄 거예요.',
-    url: 'https://info-luckkids.netlify.app/',
+      '언제까지나 행운을 기다릴 수만은 없으니까, 내 운이 트이는 개운법을 알아가보자!',
+    url: 'https://quiz.luckkids.co.kr/',
     images: [
       {
-        url: '/img/luckkids-share.png',
-        width: 1200,
-        height: 630,
+        url: '/img/luckkids-share.jpg',
+        width: 800,
+        height: 400,
         alt: 'luckkids',
       },
     ],
   },
   twitter: {
     card: 'summary',
-    title: 'luckkids | 럭키즈',
+    title: '개운법 테스트 | 내 운이 트이는 방법은?',
     description:
-      '우리는 행운아! 행운을 키우지! 건강하고 긍정적인 몸과 마음을 만드는 습관이 우리의 행운을 키워줄 거예요.',
-    images: ['/img/luckkids-share.png'],
+      '언제까지나 행운을 기다릴 수만은 없으니까, 내 운이 트이는 개운법을 알아가보자!',
+    images: ['/img/luckkids-share.jpg'],
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/img/apple-icon.png',
-    apple: '/img/apple-icon.png',
+    icon: '/favicon.ico'
   },
 };
 
