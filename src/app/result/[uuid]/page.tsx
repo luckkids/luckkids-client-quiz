@@ -159,7 +159,7 @@ export default function Result() {
       title: '럭키즈 오행 테스트',
       url: window.location.href,
       ...(result?.nickname && {
-        text: `${result?.nickname}님의 오행 결과를 확인해 보세요!`,
+        text: `${result?.nickname}님의 개운법은? 위 링크를 통해 확인해보세요!`,
       }),
     });
   };
