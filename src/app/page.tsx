@@ -12,7 +12,7 @@ const S = {
       background: '#9BB77B',
       textAlign: 'center',
       color: '#24303F',
-      padding: ['79px 0 36px'],
+      padding: ['25px 0 36px'],
       span: {
         fontSize: ['17px'],
         lineHeight: 22 / 17,
