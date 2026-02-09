@@ -201,7 +201,7 @@ export default function Result() {
     <Section>
       <Content>
         <S.DownloadImgWrap>
-            {!isOnLoad && <ResultSkeletonUI/>}
+            {/*{!isOnLoad && <ResultSkeletonUI/>}*/}
           <img
             src={resultImage(result.resultType)}
             alt=""
