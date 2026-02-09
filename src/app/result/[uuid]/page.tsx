@@ -10,11 +10,17 @@ import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Constants } from '@/constants';
 import { TQuizType } from '@/interface/interface';
+import ResultSkeletonUI from "@/components/result/resultSkeletonUi";
 
 const S = {
-  Disclaimer: styled.span(
+    DownloadImgWrap:styled.figure(mq({
+        height:['682px'],
+        fontSize:0,
+        position:'relative'
+    })),
+  PcDisclaimer: styled.span(
     mq({
-      display: 'flex',
+      display: ['none','none','flex'],
       alignItems: 'center',
       justifyContent: 'center',
       gap: ['4px'],
@@ -23,6 +29,17 @@ const S = {
       color: '#666E79',
     })
   ),
+    MoDisclaimer: styled.span(
+        mq({
+            display: ['flex','flex','none'],
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: ['4px'],
+            marginTop: ['20px'],
+            fontSize: ['15px'],
+            color: '#666E79',
+        })
+    ),
   Triangle: styled.span(
     mq({
       display: 'block',
@@ -141,6 +158,7 @@ export default function Result() {
   const { uuid } = useParams();
   const navigate = useRouter();
   const [result, setResult] = useState<IResponse>();
+  const [isOnLoad, setIsOnLoad] = useState<boolean>(false);
   const handleImageContextMenu = createImageSaveHandler(
     '/apple-icon.png',
     'luckkids-icon.png'
@@ -177,20 +195,22 @@ export default function Result() {
     getResult().then((r) => setResult(r.data));
   }, []);
 
-  if (!result?.nickname) return <></>;
+  if (!result) return <></>;
 
   return (
     <Section>
       <Content>
-        <figure>
+        <S.DownloadImgWrap>
+            {!isOnLoad && <ResultSkeletonUI/>}
           <img
-            src={resultImage(result?.resultType)}
+            src={resultImage(result.resultType)}
             alt=""
             style={{ width: '100%' }}
+            onLoad={()=> setIsOnLoad(true)}
             onContextMenu={handleImageContextMenu}
           />
-        </figure>
-        <S.Disclaimer>
+        </S.DownloadImgWrap>
+        <S.PcDisclaimer>
           <S.Triangle>
             <Image
               width={'10'}
@@ -201,7 +221,19 @@ export default function Result() {
             />
           </S.Triangle>
           이미지를 우클릭하여 나의 개운법을 저장하세요
-        </S.Disclaimer>
+        </S.PcDisclaimer>
+          <S.MoDisclaimer>
+              <S.Triangle>
+                  <Image
+                      width={'10'}
+                      height={'9'}
+                      src="/img/icon/icon-triangle.svg"
+                      alt={''}
+                      style={{ display: 'block' }}
+                  />
+              </S.Triangle>
+              이미지를 꾹 눌러 나의 개운법을 저장해보세요!
+          </S.MoDisclaimer>
       </Content>
       <Content
         css={mq({
@@ -212,16 +244,15 @@ export default function Result() {
         <S.TextWrap>
           <S.Title>행운아 {result?.nickname} 님의 개운법은 ‘시작'</S.Title>
           <p>
-            개운 루틴이 어렵게 느껴질 때는, <br />
-            <em>앱 ‘luckkids 럭키즈’</em>를 활용해보자.
+            개운 루틴이 어렵게 느껴질 때, <br />
+            앱 <em>‘luckkids 럭키즈’</em>와함께 실천해보세요!
           </p>
           <p>
-            럭키즈와 함께면 정해진 시간마다 <em>행운의 습관을 알림 받고,</em>{' '}
-            습관을 수행할 때마다 함께 성장하는 럭키즈 캐릭터와 개운법을 실천할
-            수 있다.
+            정해진 시간마다 <em>행운의 습관을 알림으로 받고, </em><br/>
+          습관을 실천할수록 럭키즈 캐릭터도 함께 성장해요.
           </p>
           <p>
-            작은 습관이 쌓이면 <em>운의 흐름이 서서히 트여갈 것이다.</em>
+            작은 습관이 쌓일수록 <br/><em>운의 흐름도 서서히 트이기 시작할 거예요!</em>
           </p>
         </S.TextWrap>
         <S.More
@@ -253,7 +284,7 @@ export default function Result() {
             </S.Svg>
             카톡 공유하기
           </S.ShareButton>
-          <S.RetryButton href={'/'}>나도 해보기</S.RetryButton>
+          <S.RetryButton href={'/'}>다시 해보기</S.RetryButton>
         </S.ButtonWrap>
       </Content>
     </Section>
