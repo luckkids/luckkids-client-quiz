@@ -67,7 +67,7 @@ const S = {
   ContentWrapper: styled.div(),
   ButtonWrapper: styled.div(
     mq({
-      padding: ['30px 25px'],
+        padding: ['12px 25px 30px 25px'],
     })
   ),
 };
@@ -94,7 +94,7 @@ export default function Home() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          height: '100vh',
+          height: '100%',
         })}
       >
         <S.ContentWrapper>
