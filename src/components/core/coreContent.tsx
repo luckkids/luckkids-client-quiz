@@ -12,6 +12,7 @@ export interface IContent {
 const S = {
   Content: styled.div(
     mq({
+      width:'100%',
       maxWidth: '390px',
       margin: '0 auto',
     }),
