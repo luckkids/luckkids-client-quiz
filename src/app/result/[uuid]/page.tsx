@@ -10,7 +10,6 @@ import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Constants } from '@/constants';
 import { TQuizType } from '@/interface/interface';
-import ResultSkeletonUI from "@/components/result/resultSkeletonUi";
 
 const S = {
     DownloadImgWrap:styled.figure(mq({
@@ -158,7 +157,6 @@ export default function Result() {
   const { uuid } = useParams();
   const navigate = useRouter();
   const [result, setResult] = useState<IResponse>();
-  const [isOnLoad, setIsOnLoad] = useState<boolean>(false);
   const handleImageContextMenu = createImageSaveHandler(
     '/apple-icon.png',
     'luckkids-icon.png'
@@ -201,12 +199,10 @@ export default function Result() {
     <Section>
       <Content>
         <S.DownloadImgWrap>
-            {/*{!isOnLoad && <ResultSkeletonUI/>}*/}
           <img
             src={resultImage(result.resultType)}
             alt=""
             style={{ width: '100%' }}
-            onLoad={()=> setIsOnLoad(true)}
             onContextMenu={handleImageContextMenu}
           />
         </S.DownloadImgWrap>
@@ -245,7 +241,7 @@ export default function Result() {
           <S.Title>행운아 {result?.nickname} 님의 개운법은 ‘시작'</S.Title>
           <p>
             개운 루틴이 어렵게 느껴질 때, <br />
-            앱 <em>‘luckkids 럭키즈’</em>와함께 실천해보세요!
+            앱 <em>‘luckkids 럭키즈’</em>와 함께 실천해보세요!
           </p>
           <p>
             정해진 시간마다 <em>행운의 습관을 알림으로 받고, </em><br/>
