@@ -14,9 +14,9 @@ export const QUIZ_QUESTIONS: IQuizQuestion[] = [
     options: [
       { text: '오늘은 뭔가 새롭게 시작하고 싶어!', type: 'TOKKINGI' },
       { text: '오늘 누구랑 점심 먹지?', type: 'TAEYANGI' },
-      { text: '오늘 해야 할 걸 차근차근 정리하자.', type: 'NABY' },
-      { text: '오늘 일정 효율적으로 배치해야지.', type: 'TURKEYI' },
-      { text: '조용히 커피 한 잔 하며 마음 정리부터.', type: 'GURUMI' },
+      { text: '오늘 해야 할 걸 차근차근 정리하자', type: 'NABY' },
+      { text: '오늘 일정 효율적으로 배치해야지', type: 'TURKEYI' },
+      { text: '조용히 커피 한 잔 하며 마음 정리부터', type: 'GURUMI' },
     ],
   },
   {
@@ -46,7 +46,7 @@ export const QUIZ_QUESTIONS: IQuizQuestion[] = [
       { text: '사람들에게 에너지를 주는 중!', type: 'TAEYANGI' },
       { text: '균형을 찾는 중!', type: 'NABY' },
       { text: '디테일을 다듬는 중!', type: 'TURKEYI' },
-      { text: '내면을 정리하는 중.', type: 'GURUMI' },
+      { text: '내면을 정리하는 중', type: 'GURUMI' },
     ],
   },
   {
@@ -72,11 +72,11 @@ export const QUIZ_QUESTIONS: IQuizQuestion[] = [
   {
     question: '요즘 가장 자주 드는 \n생각은?',
     options: [
-      { text: '새로운 걸 해보고 싶어.', type: 'TOKKINGI' },
-      { text: '좋은 사람들과 함께하고 싶어.', type: 'TAEYANGI' },
-      { text: '지금 페이스가 나쁘지 않아.', type: 'NABY' },
+      { text: '새로운 걸 해보고 싶어', type: 'TOKKINGI' },
+      { text: '좋은 사람들과 함께하고 싶어', type: 'TAEYANGI' },
+      { text: '지금 페이스가 나쁘지 않아', type: 'NABY' },
       { text: '더 효율적인 방법이 없을까?', type: 'TURKEYI' },
-      { text: '조용히 나를 돌보고 싶어.', type: 'GURUMI' },
+      { text: '조용히 나를 돌보고 싶어', type: 'GURUMI' },
     ],
   },
 ];
