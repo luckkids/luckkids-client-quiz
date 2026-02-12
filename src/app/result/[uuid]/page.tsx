@@ -161,11 +161,9 @@ export default function Result() {
   const [result, setResult] = useState<IResponse>();
 
   useEffect(()=>{
-      if(window.Kakao){
-          window.Kakao.init(KAKAO_JS_KEY);
-          window.Kakao.isInitialized();
-      }
-  },[window.Kakao])
+      window.Kakao.init(KAKAO_JS_KEY);
+      window.Kakao.isInitialized();
+  },[])
 
     const KaKaoShare = (text:string) =>{
         window.Kakao.Share.sendCustom({
