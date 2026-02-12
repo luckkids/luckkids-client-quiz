@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 import { Constants } from '@/constants';
 import { TQuizType } from '@/interface/interface';
 
-const KAKAO_JS_KEY = process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY;
 const KAKAO_TMP_ID = process.env.NEXT_PUBLIC_KAKAO_TEMPLATE_ID;
 
 const S = {
@@ -159,12 +158,6 @@ export default function Result() {
     const { uuid } = useParams();
     const navigate = useRouter();
   const [result, setResult] = useState<IResponse>();
-
-  useEffect(()=>{
-      if(window.Kakao && !window.Kakao.isInitialized()){
-          window.Kakao.init(KAKAO_JS_KEY);
-      }
-  },[window.Kakao])
 
     const KaKaoShare = (text:string) =>{
         window.Kakao.Share.sendCustom({
