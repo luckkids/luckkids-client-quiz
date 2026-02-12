@@ -164,7 +164,7 @@ export default function Result() {
       if(window.Kakao && !window.Kakao.isInitialized()){
           window.Kakao.init(KAKAO_JS_KEY);
       }
-  },[])
+  },[window.Kakao])
 
     const KaKaoShare = (text:string) =>{
         window.Kakao.Share.sendCustom({
