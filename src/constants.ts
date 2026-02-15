@@ -8,6 +8,13 @@ export const Constants = {
   POST_URL: 'https://api.luckkids.co.kr/api/v1/fortuneTest',
 };
 
+export const GA_EVENT_NAME = {
+  BUTTON_TEST_START: 'test_start',
+  BUTTON_SHARE: 'share',
+  BUTTON_RETRY: 'retry',
+  BUTTON_APP_STORE: 'app_store',
+};
+
 export const QUIZ_QUESTIONS: IQuizQuestion[] = [
   {
     question: '아침에 일어났을 때, \n제일 먼저 떠오르는 생각은?',

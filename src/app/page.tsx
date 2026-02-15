@@ -5,6 +5,7 @@ import Section from '@/components/core/coreSection';
 import Content from '@/components/core/coreContent';
 import Link from 'next/link';
 import Image from 'next/image';
+import { GA } from '@/util/ga';
 
 const S = {
   TextWrap: styled.article(
@@ -67,7 +68,7 @@ const S = {
   ContentWrapper: styled.div(),
   ButtonWrapper: styled.div(
     mq({
-        padding: ['12px 25px 30px 25px'],
+      padding: ['12px 25px 30px 25px'],
     })
   ),
 };
@@ -121,7 +122,9 @@ export default function Home() {
           </S.P>
         </S.ContentWrapper>
         <S.ButtonWrapper>
-          <Button href={'/step'}>나의 개운법 알아보기</Button>
+          <Button href={'/step'} onClick={() => GA.onClickTestStart()}>
+            나의 개운법 알아보기
+          </Button>
         </S.ButtonWrapper>
       </Content>
     </Section>
