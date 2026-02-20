@@ -21,7 +21,7 @@ export const GA = {
   },
 
   onClickAppStore: () => {
-    sendGAEvent('event', GA_EVENT_NAME.BUTTON_RETRY, {
+    sendGAEvent('event', GA_EVENT_NAME.BUTTON_APP_STORE, {
       button_name: '럭키즈_알아보기',
     });
   },
